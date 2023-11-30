@@ -1,0 +1,42 @@
+<%= form_with(model: found_report) do |form| %>
+  <% if found_report.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(found_report.errors.count, "error") %> prohibited this found_report from being saved:</h2>
+
+      <ul>
+        <% found_report.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :item_name, style: "display: block" %>
+    <%= form.text_field :item_name %>
+  </div>
+
+  <div>
+    <%= form.label :location_found, style: "display: block" %>
+    <%= form.text_field :location_found %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.datetime_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

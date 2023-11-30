@@ -1,0 +1,62 @@
+<!-- app/views/posts/show.html.erb -->
+<div class="container mt-5">
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <!-- Display the image thumbnail -->
+        <%= image_tag @found_report.image.thumb.url class: 'card-img image-fluid' if @found_report.image.present? %>
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <!-- Display other post details -->
+          <h5 class="card-title"><%= @found_report.item_name %></h5>
+          <p class="card-text">Location:<%= @found_report.location_found %></p>
+          <p class="card-text">Date:<%= @found_report.date %></p>
+          <p class="card-text">Desc:<%= @found_report.description %></p>
+          <!-- Add more details as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+<% content_for :og_tags do %>
+      
+      <meta property="og:description" content="<%= @found_report.description %>" />
+      <meta property="og:image" content="<%= @found_report.image_url %>">
+      <meta property="og:url" content="<%= found_report_url(@found_report) %>" />
+    <% end %>
+
+  <div class="row">
+    <!-- First column -->
+    <div class="col-md-6">
+      <div><%= render @found_report %></div>
+      <!-- Add content for the first column here -->
+    </div>
+
+    <!-- Second column -->
+    <div class="col-md-6">
+      <div><%= image_tag @found_report.image.url, class: 'img-fluid' if @found_report.image.present? %></div>
+      <!-- Add content for the second column here -->
+    </div>
+  </div>
+   <div>
+    <%= link_to "Share on Facebook", found_report_url(@found_report), target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "Edit this found report", edit_found_report_path(@found_report) %> |
+      <%= link_to "Back to found reports", found_reports_path %>
+      <!-- app/views/posts/show.html.erb -->
+
+      <%= link_to "Share on WhatsApp", whatsapp_share_url(@found_report.description, found_report_url(@found_report)), target: "_blank", rel: "noopener noreferrer" %>
+
+
+      <%= button_to "Destroy this found report", @found_report, method: :delete %>
+    </div>
+</div>
+
+
+   
+
