@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Item</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Lost n Found</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for the content area */
+    #content {
+      padding-top: 80px; /* Add padding to the top */
+      padding-bottom: 40px; /* Add padding to the bottom */
+    }
+    /* Custom styles for the footer */
+    footer {
+      margin-top: 40px; /* Add margin to the top of the footer */
+      padding: 20px 0; /* Add padding to the footer */
+      background-color: #f8f9fa; /* Optional: Change background color of the footer */
+    }
+  </style>
+</head>
+<body>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <% if content_for?(:og_tags) %>
-      <%= yield(:og_tags) %>
-    <% end %>
-  </head>
-  
-  <body>  
+<header>
+  <%= render 'layouts/navbar' %>
+</header>
 
-      <!-- Main Content Area -->
-      <div class=" ">
+<div id="content" class="container">
+  <%= yield %>
+</div>
 
-         <p class="notice"><%= notice %></p> 
-          <p class="alert"><%= alert %></p> 
-           <%= yield %>
-      </div>
-   
+<footer>
+  <%= render 'layouts/footer' %>
+</footer>
 
-   
-  </body>
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
 </html>
-
-
-
-
-

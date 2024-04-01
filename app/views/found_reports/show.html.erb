@@ -1,62 +1,44 @@
-<!-- app/views/posts/show.html.erb -->
-<div class="container mt-5">
-  <div class="card">
-    <div class="row no-gutters">
-      <div class="col-md-8">
-        <!-- Display the image thumbnail -->
-        <%= image_tag @found_report.image.thumb.url class: 'card-img image-fluid' if @found_report.image.present? %>
-      </div>
-      <div class="col-md-4">
-        <div class="card-body">
-          <!-- Display other post details -->
-          <h5 class="card-title"><%= @found_report.item_name %></h5>
-          <p class="card-text">Location:<%= @found_report.location_found %></p>
-          <p class="card-text">Date:<%= @found_report.date %></p>
-          <p class="card-text">Desc:<%= @found_report.description %></p>
-          <!-- Add more details as needed -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 <div class="container">
-<% content_for :og_tags do %>
-      
-      <meta property="og:description" content="<%= @found_report.description %>" />
-      <meta property="og:image" content="<%= @found_report.image_url %>">
-      <meta property="og:url" content="<%= found_report_url(@found_report) %>" />
-    <% end %>
+  <% content_for :og_tags do %>
+    <meta property="og:description" content="<%= @found_report.description %>" />
+    <meta property="og:image" content="<%= @found_report.image_url %>">
+    <meta property="og:url" content="<%= found_report_url(@found_report) %>" />
+  <% end %>
 
   <div class="row">
     <!-- First column -->
     <div class="col-md-6">
-      <div><%= render @found_report %></div>
-      <!-- Add content for the first column here -->
+      <div class="card">
+        <div class="card-body">
+          <%= render @found_report %>
+          <!-- Add content for the first column here -->
+        </div>
+      </div>
     </div>
 
     <!-- Second column -->
     <div class="col-md-6">
-      <div><%= image_tag @found_report.image.url, class: 'img-fluid' if @found_report.image.present? %></div>
-      <!-- Add content for the second column here -->
+      <div class="card">
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <% if @found_report.image.present? %>
+            <%= image_tag @found_report.image.url, class: 'img-fluid', style: 'max-width: 300px;' %>
+          <% else %>
+            <%= image_tag 'placeholder_image.jpg', class: 'img-fluid', style: 'max-width: 300px;' %>
+          <% end %>
+          <!-- Add content for the second column here -->
+        </div>
+      </div>
     </div>
   </div>
-   <div>
-    <%= link_to "Share on Facebook", found_report_url(@found_report), target: "_blank", rel: "noopener noreferrer" %>
-      <%= link_to "Edit this found report", edit_found_report_path(@found_report) %> |
-      <%= link_to "Back to found reports", found_reports_path %>
-      <!-- app/views/posts/show.html.erb -->
 
-      <%= link_to "Share on WhatsApp", whatsapp_share_url(@found_report.description, found_report_url(@found_report)), target: "_blank", rel: "noopener noreferrer" %>
-
-
-      <%= button_to "Destroy this found report", @found_report, method: :delete %>
+  <div class="card mt-3">
+    <div class="card-body d-flex justify-content-between">
+      <%= button_to "Back to found reports", found_reports_path, method: :get, class: "btn btn-primary" %>
+      <%= button_to "Edit this found report", edit_found_report_path(@found_report), method: :get, class: "btn btn-warning" %>
+      <%= link_to "Share on Facebook", "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(found_report_url(@found_report))}", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "Share on WhatsApp", "whatsapp://send?text=#{CGI.escape(@found_report.description)}%20-%20#{CGI.escape(found_report_url(@found_report))}", class: "btn btn-success", target: "_blank", rel: "noopener noreferrer" %>
+      <%= button_to "Destroy this found report", @found_report, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
     </div>
+  </div>
 </div>
-
-
-   
-

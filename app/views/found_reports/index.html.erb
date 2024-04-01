@@ -1,90 +1,35 @@
-    
-<!-- app/views/posts/index.html.erb -->
-<div class="container">
 
-      
-  <h1>Lost & Found</h1>
-  <div class="">
-        
-          <%= search_form_for @q do |f| %>
-            <div class="form-group"><%= f.label :description %>
-            <%= f.text_field :description_cont, class: 'form-control' %></div>           
-       
-            <%= f.submit class: 'btn btn-primary' %>
+<div class="container mt-5">
+  <h1 class="mb-4">Lost & Found</h1>
 
-            <%= link_to "Clear", request.path, class: 'btn btn-default' %>
-            <% end %>
-        <!-- Content for the side column goes here -->
-      </div>
-      <br/>
-      <br/>
+  <%= search_form_for @q, url: found_reports_path, method: :get, html: { class: "mb-4" } do |f| %>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description_cont, class: 'form-control' %>
+    </div>           
+    <%= f.submit "Search", class: 'btn btn-primary mr-2' %>
+    <%= link_to "Clear", root_path, class: 'btn btn-secondary' %>
+  <% end %>
+
   <div class="row">
     <% @found_reports.each do |found_report| %>
       <div class="col-md-4 mb-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title"><%= found_report.item_name %></h5>
-            <p class="card-text"><%= truncate(found_report.description, length:100) %></p>             
-              <%= link_to 'Read More', found_report, class: 'btn btn-primary' %>                     
-            
-            <!-- Add any other content or buttons as needed -->
+            <p class="card-text"><%= truncate(found_report.description, length:100) %></p>
+            <%= link_to 'Read More', found_report, class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
     <% end %>
-
-
-
-
-
-<div class="container">
-<% if user_signed_in? %> 
-    <div> Welcome <%= current_user.email %> </div> 
-      <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-  <div class="row">
-    <!-- First column -->
-    <div class="col-md-3">
-      <h2>Column 1</h2>
-        <%= search_form_for @q do |f| %>
-            <div class="form-group"><%= f.label :description %>
-            <%= f.text_field :description_cont, class: 'form-control' %></div>
-            <div class="form-group"><%= f.label :location_found_cont%>
-            <%= f.text_field :location_found_cont, class: 'form-control' %></div>
-            <div class="form-group"><%= f.label :item_name_cont %>
-            <%= f.text_field :item_name_cont, class: 'form-control' %></div>  
-       
-            <%= f.submit class: 'btn btn-primary' %>
-
-            <%= link_to "Clear", request.path, class: 'btn btn-default' %>
-            <% end %>
-      <!-- Add content for the first column here -->
-    </div>
-    <% @found_reports.each do |found_report| %>
-
-    <!-- Second column -->
-    
-    <div class="col-sm">
-     
-      
-          <p><%= found_report.description %></p>
-          <p><%= found_report.item_name %></p>
-          <p><%= found_report.location_found %></p>
-          <p><%= found_report.date %></p>
-          <p><%= link_to "Show this lostfound item", found_report %></p>
-        
-      <!-- Add content for the second column here -->
-    </div>
-     <% end %> 
-     <%= link_to "New found report", new_found_report_path %>
-
-    <% else %>
-      <%= button_to "Sign in", new_user_session_path %> 
-    <% end %>
-
   </div>
 </div>
 
-  
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-
+</body>
+</html>
