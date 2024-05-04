@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_14_081717) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_08_015052) do
   create_table "found_reports", force: :cascade do |t|
     t.string "item_name"
     t.string "location_found"
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_081717) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "status"
+    t.string "category"
   end
 
   create_table "lost_reports", force: :cascade do |t|

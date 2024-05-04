@@ -1,11 +1,13 @@
 class FoundReportsController < ApplicationController
-  before_action :set_found_report, only: %i[ show edit update destroy ]
+  before_action :set_found_report, only: %i[show edit update destroy]
 
   # GET /found_reports or /found_reports.json
   def index
-   
     @q = FoundReport.ransack(params[:q])
     @found_reports = @q.result(distinct: true)
+    if params[:category].present?
+      @found_reports = @found_reports.where(category: params[:category])
+    end
     if @found_reports.empty?
       flash.now[:notice] = "No posts found."
     end
@@ -70,6 +72,6 @@ class FoundReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def found_report_params
-      params.require(:found_report).permit(:item_name, :location_found, :date, :description, :image)
+      params.require(:found_report).permit(:item_name, :location_found, :date, :description, :image, :status, :category)
     end
 end

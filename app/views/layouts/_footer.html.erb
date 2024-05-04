@@ -1,17 +1,39 @@
-<!-- app/views/shared/_footer.html.erb -->
-<footer class="footer mt-auto py-3 bg-light">
+<!-- app/views/layouts/_footer.html.erb -->
+
+<footer class="bg-dark text-light py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h5>Site Map</h5>
-        <ul class="list-unstyled">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "New found report", new_found_report_path %></li>
-          <!-- Add more relevant links as needed -->
+        <h5>Support Us</h5>
+        <p>If you find our service helpful, consider donating to help us keep it running.</p>
+        <!-- PayPal Donate Button -->
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
+          <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online">
+          <img alt="" border="0" src="https://www.paypal.com/en_KR/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h5>Donate via M-Pesa</h5>
+        <p>You can also donate via M-Pesa using the following Paybill number.</p>
+        <!-- M-Pesa Donate Button -->
+        <p>Paybill Number: 123456</p>
+        <p>Account Number: Your Account Number</p>
+        <a href="mpesa_donation_instructions.html"><img src="mpesa.png" alt="M-Pesa Logo" width="150"></a>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <h5>Sitemap</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact Us</a></li>
         </ul>
       </div>
-      <div class="col-md-6 text-md-right">
-        <p class="mb-0">Copyright <%= Time.now.year %> josejojis</p>
+      <div class="col-md-6">
+        <p class="text-center">&copy; <%= Time.now.year %> YourApp. All rights reserved. | Designed and Developed by <a href="https://josejojis.com/">josejojis</a></p>
       </div>
     </div>
   </div>
