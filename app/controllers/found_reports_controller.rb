@@ -2,8 +2,6 @@ class FoundReportsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_found_report, only: %i[show edit update destroy]
   load_and_authorize_resource
-  #checkout
-  
 
   # GET /found_reports or /found_reports.json
   def index

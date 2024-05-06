@@ -1,4 +1,9 @@
 <div class="container">
+  <% content_for :og_tags do %>
+    <meta property="og:description" content="<%= @found_report.description %>" />
+    <meta property="og:image" content="<%= @found_report.image_url %>">
+    <meta property="og:url" content="<%= found_report_url(@found_report) %>" />
+  <% end %>
 
   <div class="row">
     <div class="col-md-6">
@@ -10,6 +15,10 @@
           <p class="card-text"><strong>Category:</strong> <%= @found_report.category %></p>
           <!-- Add other content for the first column here -->
         </div>
+      </div>
+      <!-- Advertisement space -->
+      <div class="card mt-3 p-3 bg-light">
+        Advertisement
       </div>
     </div>
 
@@ -24,29 +33,12 @@
           <!-- Add content for the second column here -->
         </div>
       </div>
-    </div>
-  </div>
-
-  <% if @found_report.status == 'found' %>
-    <div class="card mt-3">
-      <div class="card-body">
-        <h5 class="card-title">Claim Found Item</h5>
-        <%= form_with(model: @order, url: checkout_found_report_path(@found_report)) do |form| %>
-          <div class="form-group">
-            <%= form.label :name, "Your Name" %>
-            <%= form.text_field :name, class: 'form-control', placeholder: "Enter your name" %>
-          </div>
-          <div class="form-group">
-            <%= form.label :address, "Your Address" %>
-            <%= form.text_field :address, class: 'form-control', placeholder: "Enter your address" %>
-          </div>
-          <div class="form-group">
-            <%= form.submit "Claim", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
+      <!-- Advertisement space -->
+      <div class="card mt-3 p-3 bg-light">
+        Advertisement
       </div>
     </div>
-  <% end %>
+  </div>
 
   <div class="card mt-3">
     <div class="card-body d-flex justify-content-between">
@@ -59,6 +51,14 @@
           <i class="bi bi-pencil"></i>
           Edit
         <% end %>
+      <% end %>
+      <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(found_report_url(@found_report))}", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" do %>
+        <i class="bi bi-facebook"></i>
+        Facebook
+      <% end %>
+      <%= link_to "whatsapp://send?text=#{CGI.escape(@found_report.description)}%20-%20#{CGI.escape(found_report_url(@found_report))}", class: "btn btn-success", target: "_blank", rel: "noopener noreferrer" do %>
+        <i class="bi bi-whatsapp"></i>
+        WhatsApp
       <% end %>
       <% if can? :destroy, @found_report %>
         <%= button_to "Destroy", @found_report, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
