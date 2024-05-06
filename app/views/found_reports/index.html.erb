@@ -39,6 +39,12 @@
               </div>
               <div class="card-footer">
                 <%= link_to 'Read More', found_report, class: 'btn btn-primary btn-block' %>
+                <% if can? :update, found_report %>
+                  <%= link_to 'Edit', edit_found_report_path(found_report), class: 'btn btn-secondary btn-block' %>
+                <% end %>
+                <% if can? :destroy, found_report %>
+                  <%= link_to 'Delete', found_report, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %>
+                <% end %>
               </div>
             </div>
           </div>
