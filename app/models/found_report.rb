@@ -17,4 +17,6 @@ class FoundReport < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "date", "description", "id", "item_name", "location_found", "updated_at"]
   end
+  belongs_to :user
+  validates :phone_number, presence: true, length: { is: 10 }
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_06_014055) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_08_234606) do
   create_table "found_reports", force: :cascade do |t|
     t.string "item_name"
     t.string "location_found"
@@ -21,6 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_06_014055) do
     t.string "image"
     t.string "status"
     t.string "category"
+    t.integer "user_id", default: 1, null: false
+    t.string "phone_number"
+    t.index ["user_id"], name: "index_found_reports_on_user_id"
   end
 
   create_table "lost_reports", force: :cascade do |t|
@@ -48,4 +51,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_06_014055) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "found_reports", "users"
 end

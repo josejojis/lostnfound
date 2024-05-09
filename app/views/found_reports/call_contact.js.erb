@@ -1,0 +1,7 @@
+$('#call-contact-popup').html('<p>Name: <%= @found_report.user.name %></p><p>Phone Number: <%= @found_report.phone_number %></p>');
+$('#call-contact-popup').dialog({
+  modal: true,
+  title: 'Call/Contact',
+  width: 300,
+  height: 150
+});

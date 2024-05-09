@@ -67,13 +67,17 @@ class FoundReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_found_report
-      @found_report = FoundReport.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def found_report_params
-      params.require(:found_report).permit(:item_name, :location_found, :date, :description, :image, :status, :category)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_found_report
+    @found_report = FoundReport.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def found_report_params
+    params.require(:found_report).permit(:item_name, :location_found, :date, :description, :image, :status, :category, :phone_number)
+  end
+  def call_contact
+    @found_report = FoundReport.find(params[:id])
+  end
 end

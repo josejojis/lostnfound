@@ -1,4 +1,3 @@
-
 # app/models/user.rb
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -21,4 +20,5 @@ class User < ApplicationRecord
   def user?
     role == 'user'
   end
+  has_many :found_reports, dependent: :destroy
 end
