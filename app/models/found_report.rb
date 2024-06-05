@@ -1,4 +1,6 @@
 class FoundReport < ApplicationRecord
+  attr_accessor :bounty
+  validates :bounty, presence: true, numericality: { greater_than: 0 }
   enum status: { lost: 'lost', found: 'found' }
   enum category: { 
     personal_items: 'personal_items', 

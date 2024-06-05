@@ -75,7 +75,7 @@ class FoundReportsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def found_report_params
-    params.require(:found_report).permit(:item_name, :location_found, :date, :description, :image, :status, :category, :phone_number)
+    params.require(:found_report).permit(:item_name, :location_found, :date, :description, :image, :status, :category, :phone_number, :bounty)
   end
   def call_contact
     @found_report = FoundReport.find(params[:id])

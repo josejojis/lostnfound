@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_08_234606) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_11_084129) do
   create_table "found_reports", force: :cascade do |t|
     t.string "item_name"
     t.string "location_found"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_234606) do
     t.string "category"
     t.integer "user_id", default: 1, null: false
     t.string "phone_number"
+    t.integer "bounty"
     t.index ["user_id"], name: "index_found_reports_on_user_id"
   end
 
