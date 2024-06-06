@@ -2,3 +2,8 @@
   "name": "app",
   "private": "true"
 }
+{
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds"
+  }
+}
