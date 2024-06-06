@@ -1,26 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lost n Found</title>
-  <!-- Include Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
-
-  <style>
-    /* Custom styles for the content area */
-    #content {
-      padding-top: 80px; /* Add padding to the top */
-      padding-bottom: 40px; /* Add padding to the bottom */
-    }
-    /* Custom styles for the footer */
-    footer {
-      margin-top: 40px; /* Add margin to the top of the footer */
-      padding: 20px 0; /* Add padding to the footer */
-      background-color: #f8f9fa; /* Optional: Change background color of the footer */
-    }
-  </style>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+
 <body>
 
 <header>

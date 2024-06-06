@@ -4,7 +4,16 @@
     max-width: 100%;
     height: auto;
   }
-  
+  /* Example of media query for small screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar-brand {
+    margin-bottom: 10px;
+  }
+}
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
