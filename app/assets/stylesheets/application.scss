@@ -13,6 +13,41 @@
     margin-bottom: 10px;
   }
 }
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 15px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar-brand {
+    margin-bottom: 10px;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 
 
 /*
