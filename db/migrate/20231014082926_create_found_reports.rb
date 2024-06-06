@@ -5,6 +5,7 @@ class CreateFoundReports < ActiveRecord::Migration[7.0]
       t.string :location_found
       t.datetime :date
       t.text :description
+      
 
       t.timestamps
     end
