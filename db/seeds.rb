@@ -1,6 +1,6 @@
 # db/seeds.rb
 
-admin_email = 'josejojis@gmail.com'
+admin_email = 'josejojisku@gmail.com'
 admin_password = '123456789'
 
 # Create the admin user if it doesn't already exist
