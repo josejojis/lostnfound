@@ -1,10 +1,11 @@
 <div class="container">
+<!--
   <% content_for :og_tags do %>
     <meta property="og:description" content="<%= @found_report.description %>" />
     <meta property="og:image" content="<%= @found_report.image_url %>">
     <meta property="og:url" content="<%= found_report_url(@found_report) %>" />
   <% end %>
-
+ -->
   <div class="row">
     <div class="col-md-6">
       <div class="card">
@@ -59,6 +60,7 @@
           Edit
         <% end %>
       <% end %>
+      <!--
       <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(found_report_url(@found_report))}", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" do %>
         <i class="bi bi-facebook"></i>
         Facebook
@@ -66,7 +68,7 @@
       <%= link_to "whatsapp://send?text=#{CGI.escape(@found_report.description)}%20-%20#{CGI.escape(found_report_url(@found_report))}", class: "btn btn-success", target: "_blank", rel: "noopener noreferrer" do %>
         <i class="bi bi-whatsapp"></i>
         WhatsApp
-      <% end %>
+      <% end %>  -->
       <%= button_to "Destroy", @found_report, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
     </div>
   </div>
