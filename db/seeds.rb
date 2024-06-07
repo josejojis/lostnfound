@@ -1,8 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-User.create!(email: 'josejojis@gmail.com', password: '123456789', password_confirmation: '123456789', admin: true) if User.where(email: 'josejojis@gmail.com').empty?
+# db/seeds.rb
+
+admin_email = 'josejojis@gmail.com'
+admin_password = '123456789'
+
+# Create the admin user if it doesn't already exist
+unless User.exists?(email: admin_email)
+  User.create!(
+    email: admin_email,
+    password: admin_password,
+    password_confirmation: admin_password,
+    admin: true
+  )
+  puts "Admin user created with email: #{admin_email}"
+else
+  puts "Admin user already exists with email: #{admin_email}"
+end
