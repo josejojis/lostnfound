@@ -15,6 +15,7 @@ class Ability
       can :destroy, FoundReport, user_id: user.id
     else
       can :read, :all
+      can :create, FoundReport
     end
   end
 end
