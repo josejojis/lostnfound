@@ -19,6 +19,9 @@
 <header>
   <%= render 'layouts/navbar' %>
 </header>
+    <% flash.each do |key, message| %>
+      <div class="flash <%= key %>"><%= message %></div>
+    <% end %>
 
 <div id="content" class="container">
   <%= yield %>
