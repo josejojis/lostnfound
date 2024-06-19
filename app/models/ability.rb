@@ -14,7 +14,7 @@ class Ability
       can :update, FoundReport, user_id: user.id
       can :destroy, FoundReport, user_id: user.id
     else
-      can :read, FoundReport
+      can :read, :all
     end
   end
 end
